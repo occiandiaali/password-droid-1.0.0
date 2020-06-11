@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">PassWordDroid</string>
+    <string name="main_settings">Settings</string>
+    <string name="help">Help</string>
+    <string name="password">Password display here</string>
+    <string name="pass_length_label">Password Length</string>
+    <string-array name="len_options">
+        <item>8</item>
+        <item>16</item>
+        <item>32</item>
+
+    </string-array>
+    <string name="lowers">Lowercase (a-z)</string>
+    <string name="uppers">Uppercase (A-Z)</string>
+    <string name="numbers">Numbers (0-9)</string>
+    <string name="symbols">Specials (@!#)</string>
+</resources>

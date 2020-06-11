@@ -1,0 +1,2 @@
+rootProject.name='PassWordDroid'
+include ':app'
