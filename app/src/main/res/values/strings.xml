@@ -4,6 +4,7 @@
     <string name="help">Help</string>
     <string name="password">Password display here</string>
     <string name="pass_length_label">Password Length</string>
+    <string name="pass_confam">PW Verdict</string>
     <string-array name="len_options">
         <item>8</item>
         <item>16</item>
