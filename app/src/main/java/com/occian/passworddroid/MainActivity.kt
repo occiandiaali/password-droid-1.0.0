@@ -203,7 +203,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 true
             }
             R.id.info -> {
-                Toast.makeText(applicationContext, "Help Settings", Toast.LENGTH_SHORT).show()
+                val infoIntent = Intent(applicationContext, InfoActivity::class.java)
+                infoIntent.putExtra("info", "Info")
+                startActivity(infoIntent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
