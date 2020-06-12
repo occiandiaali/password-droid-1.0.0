@@ -9,10 +9,18 @@
         <item>8</item>
         <item>16</item>
         <item>32</item>
-
     </string-array>
     <string name="lowers">Lowercase (a-z)</string>
     <string name="uppers">Uppercase (A-Z)</string>
     <string name="numbers">Numbers (0-9)</string>
     <string name="symbols">Symbols (@!#)</string>
+    <string name="about_app_info">
+        PassWordDroid is an automated generator for hard to guess passwords,
+        providing the user with 3 lengths of generated strings which follow settings
+        based on characteristics the user wants -
+        capital or small letters, numbers, or special characters - in addition to the
+        chosen password (PW) length.
+        Copy and share with the click of a button too!
+    </string>
+    <string name="author_annotation">built by</string>
 </resources>
