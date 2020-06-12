@@ -1,6 +1,11 @@
 package com.occian.passworddroid
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -43,7 +48,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 password += cops
                 numOfSwitch += 1
             } else {
-                password = password.removeSuffix(cops)
+                password = password.replace(cops, "")
                 passwdTextView.text = "Password display here"
                 verdictTextView.text = "PW Verdict"
                 verdictTextView.setTextColor(Color.DKGRAY)
@@ -56,7 +61,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 password += caps
                 numOfSwitch += 1
             } else {
-                password = password.removeSuffix(caps)
+                password = password.replace(caps, "")
                 passwdTextView.text = "Password display here"
                 verdictTextView.text = "PW Verdict"
                 verdictTextView.setTextColor(Color.DKGRAY)
@@ -69,7 +74,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 password += nums
                 numOfSwitch += 1
             } else {
-                password = password.removeSuffix(nums)
+                password = password.replace(nums, "")
                 passwdTextView.text = "Password display here"
                 verdictTextView.text = "PW Verdict"
                 verdictTextView.setTextColor(Color.DKGRAY)
@@ -82,7 +87,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 password += syms
                 numOfSwitch += 1
             } else {
-                password = password.removeSuffix(syms)
+                password = password.replace(syms, "")
                 passwdTextView.text = "Password display here"
                 verdictTextView.text = "PW Verdict"
                 verdictTextView.setTextColor(Color.DKGRAY)
@@ -102,9 +107,30 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 verdictTextView.setTextColor(Color.DKGRAY)
                 progressBar.progress = 0
             }
+                generatePW(passLength) // password generator called
+        } // RUN PW Gen FAB
 
-                generatePW(passLength)
-        } // fab
+        floatingActionButtonCopy.setOnClickListener {
+            val textToCopy = passwdTextView.text
+            val clipBoard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("COPY TEXT", textToCopy)
+            clipBoard.primaryClip = clip
+            Toast.makeText(applicationContext, "PW copied!", Toast.LENGTH_SHORT).show()
+        } // copy PW FAB
+
+        floatingActionButtonShare.setOnClickListener {
+            val mIntent = Intent(Intent.ACTION_SEND)
+            mIntent.data = Uri.parse("mailto:")
+            mIntent.type = "text/plain"
+            mIntent.putExtra(Intent.EXTRA_TEXT, passwdTextView.text)
+
+            try {
+                startActivity(Intent.createChooser(mIntent, "Send via"))
+            } catch (e: Exception) {
+                Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+            }
+        } // share PW FAB
+
 
     } // on create
 
@@ -176,7 +202,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 Toast.makeText(applicationContext, "App Settings", Toast.LENGTH_SHORT).show()
                 true
             }
-            R.id.help -> {
+            R.id.info -> {
                 Toast.makeText(applicationContext, "Help Settings", Toast.LENGTH_SHORT).show()
                 true
             }
