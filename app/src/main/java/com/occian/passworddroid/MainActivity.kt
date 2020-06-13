@@ -199,7 +199,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         // Handle item selection
         return when (item.itemId) {
             R.id.settings -> {
-                Toast.makeText(applicationContext, "App Settings", Toast.LENGTH_SHORT).show()
+                val settingsIntent = Intent(applicationContext, SettingsActivity::class.java)
+                settingsIntent.putExtra("settings", "Settings")
+                startActivity(settingsIntent)
                 true
             }
             R.id.info -> {
