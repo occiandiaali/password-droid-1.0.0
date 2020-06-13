@@ -14,6 +14,7 @@
     <string name="uppers">Uppercase (A-Z)</string>
     <string name="numbers">Numbers (0-9)</string>
     <string name="symbols">Symbols (@!#)</string>
+    <string name="darkness">Mode (Dark/Light)</string>
     <string name="about_app_info">
         PassWordDroid is an automated generator for hard to guess passwords,
         providing the user with 3 lengths of generated strings which follow settings
