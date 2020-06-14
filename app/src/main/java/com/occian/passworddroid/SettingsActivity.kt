@@ -24,9 +24,8 @@ class SettingsActivity : AppCompatActivity() {
 
         val arrayAdapter: ArrayAdapter<*>
         val settingsSections = arrayOf(
-            "App Suggestions",
-            "Wallpaper",
-            "Notifications"
+            "App Suggestions"
+           // "Wallpaper"
         )
 
         arrayAdapter = ArrayAdapter(this,
@@ -38,13 +37,10 @@ class SettingsActivity : AppCompatActivity() {
             if (position == 0) {
                 Toast.makeText(applicationContext, "You would see other apps we made here", Toast.LENGTH_SHORT).show()
             }
-            if (position == 1) {
-                val paperIntent = Intent(Intent.ACTION_SET_WALLPAPER)
-                startActivity(Intent.createChooser(paperIntent, "Set wallpaper"))
-            }
-            if (position == 2) {
-                Toast.makeText(applicationContext, "Do something about notifications here", Toast.LENGTH_SHORT).show()
-            }
+//            if (position == 1) {
+//                val paperIntent = Intent(Intent.ACTION_SET_WALLPAPER)
+//                startActivity(Intent.createChooser(paperIntent, "Set wallpaper"))
+//            }
         } // listview on item click
 
         darkSwitch.setOnClickListener {

@@ -1,9 +1,11 @@
 package com.occian.passworddroid
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_info.*
 
 class InfoActivity : AppCompatActivity() {
@@ -43,21 +45,23 @@ class InfoActivity : AppCompatActivity() {
                 webIntent.putExtra("tips", "Tips for passwords")
                 startActivity(webIntent)
             }
-//            if (position == 2) {
-//                val themesIntent = Intent(applicationContext, ThemesActivity::class.java)
-//                themesIntent.putExtra("key", "Themes")
-//                startActivity(themesIntent)
-//            }
-//            if (position == 3) {
-//                val themesIntent = Intent(applicationContext, ThemesActivity::class.java)
-//                themesIntent.putExtra("key", "Themes")
-//                startActivity(themesIntent)
-//            }
-//            if (position == 4) {
-//                val themesIntent = Intent(applicationContext, ThemesActivity::class.java)
-//                themesIntent.putExtra("key", "Themes")
-//                startActivity(themesIntent)
-//            }
+            if (position == 2) {
+                val url = "https://www.termsofservicegenerator.net/live.php?token=KEjFyRkpoagszbFNxEH4Jul5Qd81MSfz"
+                val termsIntent = Intent(Intent.ACTION_VIEW)
+                termsIntent.setData(Uri.parse(url))
+                startActivity(termsIntent)
+            }
+            if (position == 3) {
+                val feedbackIntent = Intent(Intent.ACTION_SENDTO)
+                feedbackIntent.data = Uri.parse("mailto:")
+                feedbackIntent.putExtra(Intent.EXTRA_EMAIL, "ocean.diaali@gmail.com")
+                feedbackIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback")
+                if (feedbackIntent.resolveActivity(packageManager) != null) {
+                    startActivity(feedbackIntent)
+                }
+            }
+
+
         }
     } // on create
 
